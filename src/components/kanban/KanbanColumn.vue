@@ -43,7 +43,7 @@ onMounted(() => {
   <section class="kanban-column">
     <h2 class="kanban-column__title">{{ title }}</h2>
     <draggable
-      v-model="tasks"
+      v-model="thisTasks"
       group="kanban"
       tag="ul"
       @start="drag = true"
