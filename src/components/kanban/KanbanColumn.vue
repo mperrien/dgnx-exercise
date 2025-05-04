@@ -15,6 +15,10 @@ const props = defineProps<{
 }>();
 const { title, tasks, group } = toRefs(props);
 
+const emit = defineEmits<{
+  taskMoved: [task: Task];
+}>();
+
 const tasksStore = useTasksStore();
 
 const thisTasks = ref<Tasks[]>([]);
@@ -24,6 +28,10 @@ function onDragEnd(evt: unknown) {
   const movedTaskId = parseInt(evt.item.dataset.id);
 
   tasksStore.updateTaskStatus(movedTaskId, newGroup);
+  const movedTask = tasks.value.find((task) => task.id === movedTaskId);
+  if (movedTask) {
+    emit("taskMoved", movedTask);
+  }
 }
 
 onMounted(() => {

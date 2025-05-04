@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { onBeforeMount } from "vue";
+import { ref, onBeforeMount } from "vue";
 
 import { useTasksStore } from "@/stores/tasks";
 
 import KanbanColumn from "@/components/kanban/KanbanColumn.vue";
+import KanbanAlert from "@/components/kanban/KanbanAlert.vue";
 
 const tasksStore = useTasksStore();
+
+const alertTask = ref<Task | null>(null);
+function updateAlertTask(task: Task) {
+  alertTask.value = { ...task };
+}
 
 onBeforeMount(async () => {
   await tasksStore.fetchTasks();
@@ -19,14 +25,26 @@ onBeforeMount(async () => {
       <p>Loading tasks...</p>
     </div>
     <div v-else class="kanban-columns">
-      <KanbanColumn title="To-Do" :tasks="tasksStore.sortedTasks.to_do" group="to-do" />
+      <KanbanColumn
+        title="To-Do"
+        :tasks="tasksStore.sortedTasks.to_do"
+        group="to-do"
+        @task-moved="updateAlertTask"
+      />
       <KanbanColumn
         title="In-Progress"
         :tasks="tasksStore.sortedTasks.in_progress"
         group="in-progress"
+        @task-moved="updateAlertTask"
       />
-      <KanbanColumn title="Done" :tasks="tasksStore.sortedTasks.done" group="done" />
+      <KanbanColumn
+        title="Done"
+        :tasks="tasksStore.sortedTasks.done"
+        group="done"
+        @task-moved="updateAlertTask"
+      />
     </div>
+    <KanbanAlert :task="alertTask" ref="alert" />
   </div>
 </template>
 

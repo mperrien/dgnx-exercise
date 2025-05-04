@@ -27,7 +27,7 @@ const { task } = toRefs(props);
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: var(--kanban-card-shadow);
+    box-shadow: var(--box-shadow);
   }
 }
 </style>

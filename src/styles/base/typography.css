@@ -5,7 +5,7 @@ html {
 
 body {
   color: var(--text-color);
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font);
   font-size: 1.6rem; /* 16px */
   font-weight: 300;
   letter-spacing: 0.01em;

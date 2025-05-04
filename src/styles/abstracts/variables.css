@@ -1,9 +1,12 @@
 :root {
-  --spacing-xs: 1.2rem;
+  --spacing-3xs: 0.8rem;
+  --spacing-xxs: 1.2rem;
+  --spacing-xs: 1.6rem;
   --spacing-sm: 2.4rem;
   --spacing-md: 3.6rem;
   --spacing-lg: 4.8rem;
 
+  --font: "Roboto", sans-serif;
   --text-color: var(--color-black);
 
   --menu-width-open: 24rem;
@@ -29,5 +32,21 @@
   --kanban-card-border: 0.2rem solid var(--kanban-column-border-color);
   --kanban-card-border-radius: 0.4rem;
   --kanban-card-padding: var(--spacing-sm);
-  --kanban-card-shadow: 0 0 0.4rem 0.1rem var(--color-black-shadow);
+
+  --box-shadow: 0 0 0.4rem 0.1rem var(--color-black-shadow);
+
+  --dialog-width: 58rem;
+  --dialog-padding: var(--spacing-xs);
+  --dialog-border-radius: 0.4rem;
+  --dialog-header-background: var(--color-lapis);
+  --dialog-header-color: var(--color-white);
+  --dialog-content-font-size: 2rem;
+  --dialog-content-text-transform: none;
+  --dialog-footer-border-color: var(--color-pastel-aqua);
+  --dialog-button-padding: var(--spacing-xs);
+  --dialog-button-background: transparent;
+  --dialog-button-color: var(--color-lapis);
+  --dialog-button-font-size: 1.6rem;
+  --dialog-button-font-weight: 500;
+  --dialog-button-text-transform: uppercase;
 }
