@@ -29,4 +29,5 @@
   --kanban-card-border: 0.2rem solid var(--kanban-column-border-color);
   --kanban-card-border-radius: 0.4rem;
   --kanban-card-padding: var(--spacing-sm);
+  --kanban-card-shadow: 0 0 0.4rem 0.1rem var(--color-black-shadow);
 }

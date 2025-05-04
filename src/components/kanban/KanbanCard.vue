@@ -22,5 +22,12 @@ const { task } = toRefs(props);
   background-color: var(--background-color);
   border: var(--kanban-card-border);
   border-radius: var(--kanban-card-border-radius);
+  cursor: grab;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: var(--kanban-card-shadow);
+  }
 }
 </style>
