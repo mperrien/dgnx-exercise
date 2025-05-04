@@ -63,20 +63,25 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  padding: var(--kanban-column-padding);
+  overflow-x: scroll;
 
   border: var(--kanban-column-border);
   border-radius: var(--kanban-column-border-radius);
-  padding: var(--kanban-column-padding);
 
   ul {
     display: flex;
     flex-grow: 1;
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--kanban-column-gap);
     margin: var(--kanban-column-gap) 0 0;
     padding: 0;
 
     list-style-type: none;
+
+    @media (min-width: 80rem) {
+      flex-direction: column;
+    }
   }
 }
 </style>

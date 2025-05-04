@@ -21,5 +21,6 @@ import TheMenu from "@/components/menu/TheMenu.vue";
 
 .main {
   padding: var(--spacing-lg);
+  max-width: calc(100vw - var(--menu-width-collapsed));
 }
 </style>

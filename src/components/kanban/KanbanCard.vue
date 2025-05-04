@@ -17,6 +17,8 @@ const { task } = toRefs(props);
 
 <style scoped>
 .kanban-card {
+  display: flex;
+  align-items: center;
   padding: var(--kanban-card-padding);
 
   background-color: var(--background-color);
@@ -25,6 +27,10 @@ const { task } = toRefs(props);
   cursor: grab;
 
   transition: all 0.3s ease-in-out;
+
+  @media (max-width: 80rem) {
+    flex: 1 1 0;
+  }
 
   &:hover {
     box-shadow: var(--box-shadow);

@@ -61,7 +61,7 @@ onBeforeMount(async () => {
     gap: var(--kanban-column-gap);
     flex-grow: 1;
 
-    @media (min-width: 50rem) {
+    @media (min-width: 80rem) {
       grid-template: 1fr / repeat(3, 1fr);
     }
   }
