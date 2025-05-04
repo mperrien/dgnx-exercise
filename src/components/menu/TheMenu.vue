@@ -18,35 +18,52 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <nav class="menu" :class="{ 'menu--open': isMenuOpen }">
-    <button
-      type="button"
-      class="menu__toggle"
-      @click.prevent="toggleMenu"
-      :title="isMenuOpen ? 'Expand menu' : 'Collapse menu'"
-    >
-      <IconMenu />
-      <span class="screen-reader-text">Menu</span>
-    </button>
-    <ul class="menu__list list-reset">
-      <li v-for="item in menuItems" :key="item.id">
-        <router-link :to="item.path">
-          <MenuIcon :icon="item.name.toLowerCase()" />
-          {{ item.name }}
-        </router-link>
-      </li>
-    </ul>
-  </nav>
+  <div class="menu-wrapper" :class="{ 'menu-wrapper--open': isMenuOpen }">
+    <div class="menu" :class="{ 'menu--open': isMenuOpen }">
+      <button
+        type="button"
+        class="menu__toggle"
+        @click.prevent="toggleMenu"
+        :title="isMenuOpen ? 'Collapse menu' : 'Expand menu'"
+      >
+        <IconMenu />
+        <span class="screen-reader-text">Menu</span>
+      </button>
+      <nav class="nav">
+        <ul class="menu__list list-reset">
+          <li v-for="item in menuItems" :key="item.id">
+            <router-link :to="item.path">
+              <MenuIcon :icon="item.name.toLowerCase()" />
+              {{ item.name }}
+            </router-link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.menu {
-  display: flex;
-  flex-direction: column;
+.menu-wrapper {
   width: var(--menu-width-collapsed);
   overflow: hidden;
 
   background-color: var(--menu-background);
+
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-wrapper--open {
+  width: var(--menu-width-open);
+}
+
+.menu {
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  width: var(--menu-width-collapsed);
+  overflow: hidden;
 
   transition: all 0.3s ease-in-out;
 }
