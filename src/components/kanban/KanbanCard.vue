@@ -17,6 +17,10 @@ const { task } = toRefs(props);
 
 <style scoped>
 .kanban-card {
+  padding: var(--kanban-card-padding);
+
   background-color: var(--background-color);
+  border: var(--kanban-card-border);
+  border-radius: var(--kanban-card-border-radius);
 }
 </style>

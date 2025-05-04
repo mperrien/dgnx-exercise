@@ -25,9 +25,17 @@ const { title, tasks } = toRefs(props);
 .kanban-column {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 
   border: var(--kanban-column-border);
   border-radius: var(--kanban-column-border-radius);
   padding: var(--kanban-column-padding);
+}
+
+.kanban-column__tasks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kanban-column-gap);
+  margin-top: var(--kanban-column-gap);
 }
 </style>

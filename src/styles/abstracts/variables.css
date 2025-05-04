@@ -25,4 +25,8 @@
   --kanban-column-border-radius: 0.4rem;
   --kanban-column-padding: var(--spacing-lg) var(--spacing-md);
   --kanban-column-gap: var(--spacing-md);
+
+  --kanban-card-border: 0.2rem solid var(--kanban-column-border-color);
+  --kanban-card-border-radius: 0.4rem;
+  --kanban-card-padding: var(--spacing-sm);
 }

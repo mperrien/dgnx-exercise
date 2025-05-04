@@ -28,10 +28,16 @@ onBeforeMount(async () => {
 
 <style scoped>
 .tasks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  height: 100%;
+
   .kanban-columns {
     display: grid;
     grid-template: repeat(3, 1fr) / 1fr;
     gap: var(--kanban-column-gap);
+    flex-grow: 1;
 
     @media (min-width: 50rem) {
       grid-template: 1fr / repeat(3, 1fr);
