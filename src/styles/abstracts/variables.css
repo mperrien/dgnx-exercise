@@ -1,0 +1,20 @@
+:root {
+  --spacing-sm: 1.2rem;
+  --spacing-lg: 4.8rem;
+
+  --text-color: var(--color-black);
+
+  --menu-width-open: 24rem;
+  --menu-width-collapsed: 7.2rem;
+  --menu-background: var(--color-lapis);
+
+  --menu-item-background: transparent;
+  --menu-item-background-hover: var(--color-pastel-aqua);
+  --menu-item-background-active: var(--color-white);
+  --menu-item-color: var(--color-white);
+  --menu-item-color-hover: var(--color-lapis);
+  --menu-item-color-active: var(--color-lapis);
+  --menu-item-height: 6.4rem;
+
+  --menu-icon-size: 4.8rem;
+}

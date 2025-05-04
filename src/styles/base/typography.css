@@ -1,0 +1,43 @@
+html {
+  /* 1rem = 10px */
+  font-size: 62.5%;
+}
+
+body {
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem; /* 16px */
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
