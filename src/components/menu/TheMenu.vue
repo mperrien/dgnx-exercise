@@ -86,9 +86,9 @@ const toggleMenu = () => {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: var(--spacing-sm);
+      gap: var(--spacing-xs);
       height: var(--menu-item-height);
-      padding: 0 var(--spacing-sm);
+      padding: 0 var(--spacing-xs);
 
       color: var(--menu-item-color);
       text-decoration: none;

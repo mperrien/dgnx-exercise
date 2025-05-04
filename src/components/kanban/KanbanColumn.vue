@@ -20,3 +20,14 @@ const { title, tasks } = toRefs(props);
     </ul>
   </section>
 </template>
+
+<style scoped>
+.kanban-column {
+  display: flex;
+  flex-direction: column;
+
+  border: var(--kanban-column-border);
+  border-radius: var(--kanban-column-border-radius);
+  padding: var(--kanban-column-padding);
+}
+</style>

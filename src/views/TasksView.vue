@@ -31,7 +31,7 @@ onBeforeMount(async () => {
   .kanban-columns {
     display: grid;
     grid-template: repeat(3, 1fr) / 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--kanban-column-gap);
 
     @media (min-width: 50rem) {
       grid-template: 1fr / repeat(3, 1fr);
