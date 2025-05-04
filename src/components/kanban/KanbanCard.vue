@@ -10,7 +10,7 @@ const { task } = toRefs(props);
 </script>
 
 <template>
-  <li class="kanban-card" :style="`--background-color: ${task.color}`">
+  <li class="kanban-card" :style="`--background-color: ${task.color}`" :data-id="task.id">
     <h3 class="kanban-card__title">{{ task.title }}</h3>
   </li>
 </template>

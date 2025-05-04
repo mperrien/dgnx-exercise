@@ -1,24 +1,36 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
 import type { Task, Tasks } from "@/types/tasks";
 
 export const useTasksStore = defineStore("tasks", () => {
-  const tasks = ref<Tasks>({
-    to_do: [],
-    in_progress: [],
-    done: [],
-  });
+  const tasks = ref<Task[]>([]);
   const isFetching = ref<boolean>(false);
 
-  async function fetchTasks() {
-    isFetching.value = true;
-    // Reset tasks to empty arrays to avoid duplicates
-    tasks.value = {
+  const sortedTasks = computed<Tasks>(() => {
+    const object: Tasks = {
       to_do: [],
       in_progress: [],
       done: [],
     };
+    tasks.value.forEach((task) => {
+      if (task.status === "to-do") {
+        object.to_do.push(task);
+      }
+      if (task.status === "in-progress") {
+        object.in_progress.push(task);
+      }
+      if (task.status === "done") {
+        object.done.push(task);
+      }
+    });
+    return object;
+  });
+
+  async function fetchTasks() {
+    isFetching.value = true;
+    // Reset tasks to empty arrays to avoid duplicates
+    tasks.value = [];
     try {
       const response = await fetch("https://q1z3telex7a9metry.denaliops.com/data.json");
       if (!response.ok) {
@@ -29,15 +41,7 @@ export const useTasksStore = defineStore("tasks", () => {
         let id: number = 0;
         json.forEach((task) => {
           task.id = id;
-          if (task.status === "to-do") {
-            tasks.value.to_do.push(task);
-          }
-          if (task.status === "in-progress") {
-            tasks.value.in_progress.push(task);
-          }
-          if (task.status === "done") {
-            tasks.value.done.push(task);
-          }
+          tasks.value.push(task);
           id++;
         });
       }
@@ -48,5 +52,12 @@ export const useTasksStore = defineStore("tasks", () => {
     }
   }
 
-  return { tasks, isFetching, fetchTasks };
+  function updateTaskStatus(id: number, status: "to-do" | "in-progress" | "done") {
+    const index = tasks.value.findIndex((t) => t.id === id);
+    if (index !== -1) {
+      tasks.value[index].status = status;
+    }
+  }
+
+  return { tasks, sortedTasks, isFetching, fetchTasks, updateTaskStatus };
 });

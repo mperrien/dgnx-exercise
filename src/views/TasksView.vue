@@ -19,9 +19,13 @@ onBeforeMount(async () => {
       <p>Loading tasks...</p>
     </div>
     <div v-else class="kanban-columns">
-      <KanbanColumn title="To-Do" :tasks="tasksStore.tasks.to_do" />
-      <KanbanColumn title="In-Progress" :tasks="tasksStore.tasks.in_progress" />
-      <KanbanColumn title="Done" :tasks="tasksStore.tasks.done" />
+      <KanbanColumn title="To-Do" :tasks="tasksStore.sortedTasks.to_do" group="to-do" />
+      <KanbanColumn
+        title="In-Progress"
+        :tasks="tasksStore.sortedTasks.in_progress"
+        group="in-progress"
+      />
+      <KanbanColumn title="Done" :tasks="tasksStore.sortedTasks.done" group="done" />
     </div>
   </div>
 </template>

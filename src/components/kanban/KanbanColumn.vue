@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { toRefs } from "vue";
+import { toRefs, ref, onMounted } from "vue";
+import draggable from "vuedraggable";
+
+import { useTasksStore } from "@/stores/tasks";
 
 import type Task from "@/types/tasks";
 
@@ -8,16 +11,42 @@ import KanbanCard from "@/components/kanban/KanbanCard.vue";
 const props = defineProps<{
   title: string;
   tasks: Task[];
+  group: string;
 }>();
-const { title, tasks } = toRefs(props);
+const { title, tasks, group } = toRefs(props);
+
+const tasksStore = useTasksStore();
+
+const thisTasks = ref<Tasks[]>([]);
+
+function onDragEnd(evt: unknown) {
+  const newGroup = evt.to.dataset.group;
+  const movedTaskId = parseInt(evt.item.dataset.id);
+
+  tasksStore.updateTaskStatus(movedTaskId, newGroup);
+}
+
+onMounted(() => {
+  thisTasks.value = tasks.value;
+});
 </script>
 
 <template>
   <section class="kanban-column">
     <h2 class="kanban-column__title">{{ title }}</h2>
-    <ul class="kanban-column__tasks list-reset">
-      <KanbanCard v-for="task in tasks" :key="task.id" :data-key="task.id" :task="task" />
-    </ul>
+    <draggable
+      v-model="tasks"
+      group="kanban"
+      tag="ul"
+      @start="drag = true"
+      @end="onDragEnd"
+      item-key="id"
+      :data-group="group"
+    >
+      <template #item="{ element }">
+        <KanbanCard :task="element" />
+      </template>
+    </draggable>
   </section>
 </template>
 
@@ -30,12 +59,16 @@ const { title, tasks } = toRefs(props);
   border: var(--kanban-column-border);
   border-radius: var(--kanban-column-border-radius);
   padding: var(--kanban-column-padding);
-}
 
-.kanban-column__tasks {
-  display: flex;
-  flex-direction: column;
-  gap: var(--kanban-column-gap);
-  margin-top: var(--kanban-column-gap);
+  ul {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: var(--kanban-column-gap);
+    margin: var(--kanban-column-gap) 0 0;
+    padding: 0;
+
+    list-style-type: none;
+  }
 }
 </style>
